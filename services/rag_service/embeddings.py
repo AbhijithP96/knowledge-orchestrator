@@ -1,7 +1,11 @@
 from sentence_transformers import SentenceTransformer
 from typing import List
+import os
+from dotenv import load_dotenv
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+load_dotenv()
+
+model = SentenceTransformer(os.environ['EMBED_MODEL'])
 
 def embed_text(text: str):
     embeddings = model.encode([text], convert_to_numpy=True).flatten()

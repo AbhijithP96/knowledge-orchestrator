@@ -1,8 +1,12 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "gpt-oss:20b-cloud"
+OLLAMA_MODEL = os.environ['OLLAMA_MODEL']
 
 def generate_with_ollama(prompt: str) -> str:
 
